@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A static prototype for the LSA Booking Backend demo interface."
+    />
+    <title>LSA Booking | Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="LSA Booking demo home">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span>LSA Booking</span>
+      </a>
+      <span class="badge">Prototype mode</span>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Learning support made simple</p>
+        <h1 id="page-title">Find support. Book a time.</h1>
+        <p class="intro-copy">
+          This lightweight interface demonstrates the final LSA search and booking
+          flow. It currently uses sample data and does not send requests to the backend.
+        </p>
+      </section>
+
+      <section class="panel search-panel" aria-labelledby="search-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Step 1</p>
+            <h2 id="search-title">Find an available LSA</h2>
+          </div>
+          <p class="panel-note">Try: maths, writing, dyslexia, science</p>
+        </div>
+
+        <form id="search-form" class="search-form">
+          <label for="skill">What support do you need?</label>
+          <div class="search-controls">
+            <input
+              id="skill"
+              name="skill"
+              type="search"
+              placeholder="e.g. maths"
+              autocomplete="off"
+            />
+            <button type="submit">Search LSAs</button>
+          </div>
+        </form>
+
+        <div id="search-message" class="form-message" aria-live="polite"></div>
+        <div id="lsa-results" class="lsa-results" aria-live="polite"></div>
+      </section>
+
+      <section class="panel booking-panel" aria-labelledby="booking-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Step 2</p>
+            <h2 id="booking-title">Request a booking</h2>
+          </div>
+          <p id="selected-lsa" class="selected-lsa">Select an LSA above to continue.</p>
+        </div>
+
+        <form id="booking-form" class="booking-form">
+          <div class="field-grid">
+            <label for="parent-name">
+              Parent name
+              <input id="parent-name" name="parentName" type="text" required />
+            </label>
+            <label for="parent-email">
+              Email address
+              <input id="parent-email" name="parentEmail" type="email" required />
+            </label>
+            <label for="parent-phone">
+              Phone number
+              <input id="parent-phone" name="parentPhone" type="tel" required />
+            </label>
+            <label for="start-time">
+              Start time
+              <input id="start-time" name="startTime" type="datetime-local" required />
+            </label>
+            <label for="end-time">
+              End time
+              <input id="end-time" name="endTime" type="datetime-local" required />
+            </label>
+          </div>
+          <button id="booking-submit" type="submit" disabled>Prepare booking request</button>
+        </form>
+
+        <div id="booking-message" class="form-message" aria-live="polite"></div>
+        <pre id="booking-preview" class="booking-preview" hidden></pre>
+      </section>
+
+      <aside class="integration-note" aria-labelledby="integration-title">
+        <h2 id="integration-title">Backend integration, later</h2>
+        <p>
+          When the hiring-assignment APIs are implemented, replace the sample data
+          with an LSA search request and submit the booking payload shown above.
+        </p>
+        <ul>
+          <li><code>GET /api/v1/lsas/search/?skill=…</code></li>
+          <li><code>POST /api/v1/bookings/</code></li>
+          <li>Show API validation and payment-status responses here.</li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      Static demonstration UI for the LSA Booking Backend hiring project.
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
